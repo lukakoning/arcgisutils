@@ -10,7 +10,6 @@
 #' @details
 #'
 #' Authentication with `auth_shiny()` requires `shinyOAuth` 0.6.0 or later.
-#' ArcGIS token responses that omit the token type are treated as Bearer tokens.
 #' When creating an OAuth app in ArcGIS Online / Enterprise, ensure that
 #' the app has a valid redirect URI. This **must be** the same redirect URI
 #' that is used by `shinyOAuth` and **must be** the same port as the
