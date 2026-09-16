@@ -9,7 +9,8 @@
 #'
 #' @details
 #'
-#' Authentication with `auth_shiny()` requires the package `shinyOAuth`.
+#' Authentication with `auth_shiny()` requires `shinyOAuth` 0.6.0 or later.
+#' ArcGIS token responses that omit the token type are treated as Bearer tokens.
 #' When creating an OAuth app in ArcGIS Online / Enterprise, ensure that
 #' the app has a valid redirect URI. This **must be** the same redirect URI
 #' that is used by `shinyOAuth` and **must be** the same port as the
@@ -88,12 +89,13 @@ oauth_provider_arcgis <- function(
   ver <- utils::packageVersion("arcgisutils")
   arc_ver <- paste0("arcgisutils v", ver)
 
-  rlang::check_installed("shinyOAuth")
+  rlang::check_installed("shinyOAuth", version = "0.6.0")
   shinyOAuth::oauth_provider(
     name = arc_ver,
     auth_url = paste0(host, "/sharing/rest/oauth2/authorize"),
     token_url = paste0(host, "/sharing/rest/oauth2/token"),
     token_auth_style = "body",
+    allow_missing_token_type = TRUE,
     userinfo_url = paste0(host, "/sharing/rest/portals/self?f=json"),
     userinfo_id_selector = function(x) x$user$id
   )
@@ -111,7 +113,7 @@ auth_shiny <- function(
   host = arc_host(),
   ...
 ) {
-  rlang::check_installed("shinyOAuth")
+  rlang::check_installed("shinyOAuth", version = "0.6.0")
   dots <- rlang::list2(...)
   check_dots_named(dots)
 

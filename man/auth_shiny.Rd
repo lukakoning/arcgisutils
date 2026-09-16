@@ -35,7 +35,8 @@ authentication experience for \code{{shiny}} applications via the package
 use \code{auth_shiny()} will enable user-specific behavior and authentications.
 }
 \details{
-Authentication with \code{auth_shiny()} requires the package \code{shinyOAuth}.
+Authentication with \code{auth_shiny()} requires \code{shinyOAuth} 0.6.0 or later.
+ArcGIS token responses that omit the token type are treated as Bearer tokens.
 When creating an OAuth app in ArcGIS Online / Enterprise, ensure that
 the app has a valid redirect URI. This \strong{must be} the same redirect URI
 that is used by \code{shinyOAuth} and \strong{must be} the same port as the
