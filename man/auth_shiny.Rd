@@ -51,6 +51,7 @@ Creating the client inside the server function will result in authentication fai
 
 The user info returned from \code{auth$token@userinfo} has the same structure
 as \code{\link[=arc_portal_self]{arc_portal_self()}}. See that function's documentation for available fields.
+The authenticated user is identified by \code{user$id} in that response.
 
 The below example is derived from the shinyOAuth documentation.
 

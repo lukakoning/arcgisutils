@@ -25,6 +25,7 @@
 #'
 #' The user info returned from `auth$token@userinfo` has the same structure
 #' as [arc_portal_self()]. See that function's documentation for available fields.
+#' The authenticated user is identified by `user$id` in that response.
 #'
 #' The below example is derived from the shinyOAuth documentation.
 #'
@@ -94,7 +95,7 @@ oauth_provider_arcgis <- function(
     token_url = paste0(host, "/sharing/rest/oauth2/token"),
     token_auth_style = "body",
     userinfo_url = paste0(host, "/sharing/rest/portals/self?f=json"),
-    userinfo_id_selector = function(x) x$id
+    userinfo_id_selector = function(x) x$user$id
   )
 }
 
